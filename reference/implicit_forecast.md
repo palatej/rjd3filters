@@ -1,0 +1,62 @@
+# Retrieve implicit forecasts corresponding to the asymmetric filters
+
+Function to retrieve the implicit forecasts corresponding to the
+asymmetric filters
+
+## Usage
+
+``` r
+implicit_forecast(x, coefs)
+```
+
+## Arguments
+
+- x:
+
+  a univariate or multivariate time series.
+
+- coefs:
+
+  a `matrix` or a `list` that contains all the coefficients of the
+  asymmetric and symmetric filters. (from the symmetric filter to the
+  shortest). See details.
+
+## Details
+
+Let \\h\\ be the bandwidth of the symmetric filter, \\v\_{-h}, \ldots,
+v_h\\ the coefficients of the symmetric filter and \\w\_{-h}^q, \ldots,
+w_h^q\\ the coefficients of the asymmetric filter used to estimate the
+trend when \\q\\ future values are known (with the convention
+\\w\_{q+1}^q=\ldots=w_h^q=0\\). Let denote \\y\_{-h},\ldots, y_0\\ the
+las \\h\\ available values of the input times series. Let also note
+\\y\_{-h},\ldots,y\_{0}\\ the observed series studied and
+\\y\_{1}^\*,\dots y_h^\*\\the implicit forecast induced by \\w^0,\dots
+w^{h-1}\\. This means that: \$\$ \forall q, \quad \sum\_{i=-h}^0
+v_iy_i + \sum\_{i=1}^h v_iy_i^\* =\sum\_{i=-h}^0 w_i^qy_i +
+\sum\_{i=1}^h w_i^qy_i^\* \$\$ which is equivalent to \$\$ \forall q,
+\sum\_{i=1}^h (v_i- w_i^q) y_i^\* =\sum\_{i=-h}^0 (w_i^q-v_i)y_i. \$\$
+Note that this is solved numerically: the solution isn't exact.
+
+## Examples
+
+``` r
+x <- retailsa$AllOtherGenMerchandiseStores
+ql <- lp_filter(horizon = 6, kernel = "Henderson", endpoints = "QL")
+#> Error in .jcall("jdplus/filters/base/r/LocalPolynomialFilters", "Ljdplus/toolkit/base/core/math/linearfilters/ISymmetricFiltering;",     "filters", as.integer(horizon), as.integer(degree), kernel,     endpoints, d, tweight, passband): java.lang.UnsupportedClassVersionError: jdplus/filters/base/r/LocalPolynomialFilters has been compiled by a more recent version of the Java Runtime (class file version 65.0), this version of the Java Runtime only recognizes class file versions up to 61.0
+lc <- lp_filter(horizon = 6, kernel = "Henderson", endpoints = "LC")
+#> Error in .jcall("jdplus/filters/base/r/LocalPolynomialFilters", "Ljdplus/toolkit/base/core/math/linearfilters/ISymmetricFiltering;",     "filters", as.integer(horizon), as.integer(degree), kernel,     endpoints, d, tweight, passband): RcallMethod: cannot determine object class
+f_ql <- implicit_forecast(x, ql)
+#> Error: object 'ql' not found
+f_lc <- implicit_forecast(x, lc)
+#> Error: object 'lc' not found
+
+plot(window(x, start = 2007),
+     xlim = c(2007,2012))
+
+lines(ts(c(tail(x,1), f_ql), frequency = frequency(x), start = end(x)),
+      col = "red", lty = 2)
+#> Error: object 'f_ql' not found
+lines(ts(c(tail(x,1), f_lc), frequency = frequency(x), start = end(x)),
+      col = "blue", lty = 2)
+#> Error: object 'f_lc' not found
+```
