@@ -39,8 +39,11 @@
   : Compute quality criteria for asymmetric filters
 - [`fst()`](https://rjdverse.github.io/rjd3filters/reference/fst.md) :
   FST criteria
-- [`implicit_forecast()`](https://rjdverse.github.io/rjd3filters/reference/implicit_forecast.md)
+- [`implicit_forecasts()`](https://rjdverse.github.io/rjd3filters/reference/implicit_forecasts.md)
   : Retrieve implicit forecasts corresponding to the asymmetric filters
+- [`underlying_forecasts()`](https://rjdverse.github.io/rjd3filters/reference/underlying_forecasts.md)
+  : Retrieve underlying forecasts corresponding to the asymmetric
+  filters
 - [`get_properties_function()`](https://rjdverse.github.io/rjd3filters/reference/get_properties_function.md)
   : Get properties of filters
 - [`mse()`](https://rjdverse.github.io/rjd3filters/reference/mse.md) :
@@ -133,4 +136,5 @@
 ## Deprecated functions
 
 - [`cross_validation()`](https://rjdverse.github.io/rjd3filters/reference/deprecated-rjd3filters.md)
+  [`implicit_forecast()`](https://rjdverse.github.io/rjd3filters/reference/deprecated-rjd3filters.md)
   : Deprecated function

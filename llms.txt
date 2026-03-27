@@ -24,7 +24,7 @@ computed.
 rjd3filters relies on the
 [rJava](https://CRAN.R-project.org/package=rJava) package.
 
-Running rjd3 packages requires **Java 17 or higher**. How to set up such
+Running rjd3 packages requires **Java 21 or higher**. How to set up such
 a configuration in R is explained
 [here](https://jdemetra-new-documentation.netlify.app/#Rconfig).
 
@@ -90,15 +90,15 @@ legend("topleft", legend = c("y", "Musgrave", "FST", "RKHS"),
 
 ![](reference/figures/README-plot-global-1.png)
 
-The last estimates can also be analysed with the `implicit_forecast`
+The last estimates can also be analysed with the `implicit_forecasts`
 function that retreive the implicit forecasts corresponding to the
 asymmetric filters (i.e., the forecasts needed to have the same
 end-points estimates but using the symmetric filter).
 
 ``` r
-f_musgrave <- implicit_forecast(y, musgrave)
-f_fst <- implicit_forecast(y, fst_notimeliness)
-f_rkhs <- implicit_forecast(y, rkhs_timeliness)
+f_musgrave <- implicit_forecasts(y, musgrave)
+f_fst <- implicit_forecasts(y, fst_notimeliness)
+f_rkhs <- implicit_forecasts(y, rkhs_timeliness)
 
 plot(window(y, start = 2007),
      xlim = c(2007, 2012), ylim = c(3600, 4600),
@@ -417,8 +417,11 @@ Licence
   : Compute quality criteria for asymmetric filters
 - [`fst()`](https://rjdverse.github.io/rjd3filters/reference/fst.md) :
   FST criteria
-- [`implicit_forecast()`](https://rjdverse.github.io/rjd3filters/reference/implicit_forecast.md)
+- [`implicit_forecasts()`](https://rjdverse.github.io/rjd3filters/reference/implicit_forecasts.md)
   : Retrieve implicit forecasts corresponding to the asymmetric filters
+- [`underlying_forecasts()`](https://rjdverse.github.io/rjd3filters/reference/underlying_forecasts.md)
+  : Retrieve underlying forecasts corresponding to the asymmetric
+  filters
 - [`get_properties_function()`](https://rjdverse.github.io/rjd3filters/reference/get_properties_function.md)
   : Get properties of filters
 - [`mse()`](https://rjdverse.github.io/rjd3filters/reference/mse.md) :
@@ -511,5 +514,6 @@ Licence
 ## Deprecated functions
 
 - [`cross_validation()`](https://rjdverse.github.io/rjd3filters/reference/deprecated-rjd3filters.md)
+  [`implicit_forecast()`](https://rjdverse.github.io/rjd3filters/reference/deprecated-rjd3filters.md)
   : Deprecated function
 

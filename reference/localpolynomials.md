@@ -12,7 +12,7 @@ localpolynomials(
   kernel = c("Henderson", "Uniform", "Biweight", "Trapezoidal", "Triweight", "Tricube",
     "Gaussian", "Triangular", "Parabolic"),
   endpoints = c("LC", "QL", "CQ", "CC", "DAF"),
-  ic = 4.5,
+  ic = 3.5,
   tweight = 0,
   passband = pi/12
 )

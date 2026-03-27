@@ -6,6 +6,8 @@ Deprecated function
 
 ``` r
 cross_validation(x, coef, ...)
+
+implicit_forecast(x, coefs)
 ```
 
 ## Arguments

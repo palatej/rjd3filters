@@ -8,11 +8,30 @@ The format is based on [Keep a
 Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### [Unreleased](https://github.com/rjdverse/rjd3filters/compare/v2.2.0...HEAD)
+### [Unreleased](https://github.com/rjdverse/rjd3filters/compare/v2.3.0...HEAD)
 
 #### Added
 
+- New method
+  [`underlying_forecasts()`](https://rjdverse.github.io/rjd3filters/reference/underlying_forecasts.md).
+
 #### Changed
+
+- Correction in internal functions when filtering series with NA and the
+  beginning and not and the end of the series.
+
+- For polynomial methods, default I/C ratio fixed to 3.5 (as in X-11 for
+  H-13).
+
+- [`implicit_forecast()`](https://rjdverse.github.io/rjd3filters/reference/deprecated-rjd3filters.md)
+  function renamed to
+  [`implicit_forecasts()`](https://rjdverse.github.io/rjd3filters/reference/implicit_forecasts.md).
+
+### [2.3.0](https://github.com/rjdverse/rjd3filters/compare/v2.2.0...v2.3.0) - 2025-04-24
+
+#### Changed
+
+- New JARS v2.3.0
 
 ### [2.2.0](https://github.com/rjdverse/rjd3filters/compare/v2.1.1...v2.2.0) - 2025-03-01
 
